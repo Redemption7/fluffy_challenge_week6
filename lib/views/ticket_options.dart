@@ -32,7 +32,6 @@ class TicketOptions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
         RouteDetails(),
-        const SizedBox(height: 20,),
         Text('Select your class',
         style: TextStyle(
           fontSize: 16,
@@ -60,7 +59,7 @@ class TicketOptions extends StatelessWidget {
             )),
           ),
         ),
-        const SizedBox(height: 25,),
+       
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text('Seating',
@@ -105,7 +104,7 @@ class TicketOptions extends StatelessWidget {
       bottomSheet: Container(
         alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
-          height: 150,
+          height: 100,
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -156,8 +155,10 @@ class TicketOptions extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),),
-                            Icon(Icons.cancel,
-                            color: AppColors.grey,),
+                           IconButton(onPressed: (){
+                                Navigator.pop(context);
+                           }, icon: Icon(Icons.cancel,
+                            color: AppColors.grey,),)
                           ],),
                         ),
                       Padding(

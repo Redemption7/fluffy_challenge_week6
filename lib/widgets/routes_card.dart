@@ -10,7 +10,7 @@ class RoutesCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-          height: 100,
+          height: MediaQuery.of(context).size.height*0.12,
           width: MediaQuery.of(context).size.width*0.82,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -23,7 +23,7 @@ class RoutesCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                height: 95,
+                height: MediaQuery.of(context).size.height*0.1,
                 width: 95,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -43,7 +43,7 @@ class RoutesCard extends StatelessWidget {
                     fontWeight: FontWeight.bold
                   ),
                   ),
-                  const SizedBox(height: 15,),
+                  const SizedBox(height: 8,),
                   RichText(text: TextSpan(
                    children: [
                     TextSpan(

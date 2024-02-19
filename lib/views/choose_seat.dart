@@ -39,7 +39,7 @@ class _ChooseSeatState extends State<ChooseSeat> {
           children: [
             const SizedBox(height: 15,),
         Container(
-          height: MediaQuery.of(context).size.height*0.56,
+          height: MediaQuery.of(context).size.height*0.60,
           width: MediaQuery.of(context).size.width*0.88,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -92,7 +92,7 @@ class _ChooseSeatState extends State<ChooseSeat> {
                 ),
              ),
               Container(
-             height: MediaQuery.of(context).size.height*0.47,
+             height: MediaQuery.of(context).size.height*0.45,
              width: MediaQuery.of(context).size.width*0.88,
              decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),

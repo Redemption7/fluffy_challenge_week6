@@ -101,6 +101,7 @@ class _BookingsViewState extends State<BookingsView> {
               ),
               SafeArea(
                 child:  Container(
+                  height: MediaQuery.of(context).size.height*0.23,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -131,7 +132,7 @@ class _BookingsViewState extends State<BookingsView> {
                           children: List.generate(3, (index) => RoutesCard())
                         ),
                       ),
-                      const SizedBox(height: 65,)
+                      const SizedBox(height: 5,)
                     ],
                   ),
                 ),
@@ -140,11 +141,11 @@ class _BookingsViewState extends State<BookingsView> {
             ],
           ),
            Positioned(
-          top: 210,
+          top: 200,
           left: 18,
          // right: 10,
-          height: 380,
-          width: MediaQuery.of(context).size.width*0.92,
+          height: MediaQuery.of(context).size.height*0.45,
+          width: MediaQuery.of(context).size.width*0.90,
           child: Stack(
             children: [
               Container(

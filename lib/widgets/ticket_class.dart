@@ -29,7 +29,7 @@ class TicketClass extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 200,
+        height: MediaQuery.of(context).size.height*0.24,
         width: MediaQuery.of(context).size.width*0.60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
