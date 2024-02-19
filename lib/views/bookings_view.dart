@@ -1,12 +1,27 @@
 import 'package:fluffy_challenge_week6/constants/colors.dart';
+import 'package:fluffy_challenge_week6/widgets/custom_btn.dart';
 import 'package:fluffy_challenge_week6/widgets/index.dart';
 import 'package:fluffy_challenge_week6/widgets/routes_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
-class BookingsView extends StatelessWidget {
-  const BookingsView({super.key});
+import 'route_pricing.dart';
+
+class BookingsView extends StatefulWidget {
+   BookingsView({super.key});
+
+  @override
+  State<BookingsView> createState() => _BookingsViewState();
+}
+
+class _BookingsViewState extends State<BookingsView> {
+ double borderRadius = 12;
+ TextEditingController pickUpController = TextEditingController();
+ TextEditingController destinationController = TextEditingController();
+ TextEditingController dateController = TextEditingController();
+ bool isGrey = false;
+ bool _switchValue = true;
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +130,8 @@ class BookingsView extends StatelessWidget {
                         child: Row(
                           children: List.generate(3, (index) => RoutesCard())
                         ),
-                      )
+                      ),
+                      const SizedBox(height: 65,)
                     ],
                   ),
                 ),
@@ -127,17 +143,240 @@ class BookingsView extends StatelessWidget {
           top: 210,
           left: 18,
          // right: 10,
-          height: 450,
+          height: 380,
           width: MediaQuery.of(context).size.width*0.92,
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(15)
-            ),
-            child: Text('good afternoon')))
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(15)
+                ),
+                child: Form(child: 
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextFormField(
+                      controller: pickUpController,
+                      style: TextStyle(color: AppColors.darkBlue),
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          prefixIcon: SizedBox(
+                            width: 60,
+                            child: Row(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Icon(
+                                  Icons.train,
+                                  color: AppColors.darkBlue,
+                                ),
+                                Container(
+                                  width: 1,
+                                  height: 20,
+                                  color: AppColors.grey.withOpacity(0.6),
+                                )
+                              ],
+                            ),
+                          ),
+                          hintText: "New York, NY",
+                          iconColor: AppColors.darkBlue,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          filled: false,
+                          // fillColor:Colors.black.withOpacity(0.1),
+                          hintStyle:
+                                TextStyle(color: AppColors.darkBlue)),
+                      onChanged: (value){
+                        setState(() {
+                          isGrey = false;
+                        });
+                      },
+                      enabled: !isGrey,
+                      keyboardType: TextInputType.number,
+                      
+                    ),
+                    TextFormField(
+                      controller: destinationController,
+                      style: TextStyle(color: AppColors.darkBlue),
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          prefixIcon: SizedBox(
+                            width: 60,
+                            child: Row(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Icon(
+                                  Icons.train,
+                                  color: AppColors.darkBlue,
+                                ),
+                                Container(
+                                  width: 1,
+                                  height: 20,
+                                  color: AppColors.grey.withOpacity(0.6),
+                                )
+                              ],
+                            ),
+                          ),
+                          hintText: "Boston, MA",
+                          iconColor: AppColors.darkBlue,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          filled: false,
+                          // fillColor:Colors.black.withOpacity(0.1),
+                          hintStyle:
+                                TextStyle(color: AppColors.darkBlue)),
+                      onChanged: (value){
+                        setState(() {
+                          isGrey = false;
+                        });
+                      },
+                      enabled: !isGrey,
+                      keyboardType: TextInputType.number,
+                      
+                    ),
+                    TextFormField(
+                      controller: dateController,
+                      style: TextStyle(color: AppColors.darkBlue),
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          suffixIcon: SizedBox(
+                            width: 65,
+                           
+                            child: Column(
+                              children: [
+                                Text('Return?',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.grey.withOpacity(0.6),
+                                  fontSize: 10
+                                ),),
+                               CupertinoSwitch(
+                                    value: _switchValue,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _switchValue = value;
+                                      });
+                                    },
+                                  ),
+                              ],
+                            ),
+                          ),
+                          prefixIcon: SizedBox(
+                            width: 60,
+                            child: Row(
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.center,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceEvenly,
+                              children: [
+                                  Icon(
+                                  Icons.calendar_view_day_rounded,
+                                  color: AppColors.darkBlue,
+                                ),
+                                Container(
+                                  width: 1,
+                                  height: 20,
+                                  color: AppColors.grey.withOpacity(0.6),
+                                )
+                              ],
+                            ),
+                          ),
+                          hintText: "Thu, Jan 1",
+                          iconColor: AppColors.darkBlue,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey),
+                            borderRadius:
+                                BorderRadius.circular(borderRadius),
+                          ),
+                          filled: false,
+                          // fillColor:Colors.black.withOpacity(0.1),
+                          hintStyle:
+                                TextStyle(color: AppColors.darkBlue)),
+                      onChanged: (value){
+                        setState(() {
+                          isGrey = false;
+                        });
+                      },
+                      enabled: !isGrey,
+                      keyboardType: TextInputType.number,
+                      
+                    ),
+                    CustomBtn(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> RoutePricing()));
+                      },
+                      width: MediaQuery.of(context).size.width*0.92,
+                      btnName: 'Search Bus')
+                    ],
+                  ),
+                )) ),
+                Positioned(
+                  right: 25,
+                  top: 82,
+                  child: CircleAvatar(
+                  backgroundColor: Colors.grey.shade100,
+                  radius: 25,
+                  child: const Icon(Icons.swap_vert,
+                  weight: 1,
+                  ),
+                ))
+            ],
+          ))
         ],
       ),
-    
+    bottomNavigationBar: BottomNavigationBar(
+      selectedItemColor: AppColors.darkBlue,
+      backgroundColor: AppColors.white,
+      unselectedItemColor: AppColors.grey,
+      items: const [
+      BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(CupertinoIcons.home)),
+      BottomNavigationBarItem(
+        label: 'Explore',
+        icon: Icon(CupertinoIcons.search)),
+      BottomNavigationBarItem(
+        label: 'My Ticket',
+        icon: Icon(CupertinoIcons.ticket)),
+      BottomNavigationBarItem(
+        label: 'Profile',
+        icon: Icon(CupertinoIcons.person)),
+    ]),
     );
   }
 }
